@@ -4,13 +4,26 @@ import styled from 'styled-components';
 
 const Linke = styled(Link)`
   border-radius: 8px;
+  border: none;
+
   margin-left: 32px;
   margin-right: 32px;
+
   padding: 10px 16px;
   text-decoration: none;
 
+  font-size: 16px;
+
   background-color: #2e3440;
   color: white;
+`;
+
+const MainContainer = styled.ul`
+  padding: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
 `;
 
 const HomePage = () => {
@@ -32,7 +45,7 @@ const HomePage = () => {
     <div>
       <h1>Liste des utilisateurs</h1>
       {users.length > 0 ? (
-        <ul>
+        <MainContainer>
           {users.map((user, index) => (
             <span key={index + 1}>
               <Linke
@@ -43,7 +56,7 @@ const HomePage = () => {
               </Linke>
             </span>
           ))}
-        </ul>
+        </MainContainer>
       ) : (
         <p>Chargement...</p>
       )}

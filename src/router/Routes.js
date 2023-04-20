@@ -20,7 +20,7 @@ const routes = createBrowserRouter([
   {
     path: `/Article/:id`,
     element: <ArticlePage />,
-  },
+  }, // on ne met pas de route pour app car app est un root pour utiliser cette page de rooting
 ]);
 
 export default routes;

@@ -14,7 +14,6 @@ const Div = styled.div`
   padding: 30px;
   margin: 15px;
 
-  font-size: 18px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -67,7 +66,9 @@ const UserPage = () => {
         <Ul>
           {users.map((user, index) => (
             <Div key={index + 1}>
-              {user.id} {user.title}
+              <div style={{ fontWeight: 'bold', fontSize: '18px' }}>
+                {user.id} {user.title}
+              </div>
               <div>{user.body}</div>
               <Link to={`/Article/${user.id}`}>
                 <Butt> Voir l'article</Butt>
