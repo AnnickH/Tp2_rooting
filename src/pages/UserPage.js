@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Div = styled.div`
-  width: 364px;
-  height: 280px;
+  width: 380px;
+  height: 310px;
 
   background: #4c566a;
   color: #eceff4;
@@ -49,17 +49,29 @@ const UserPage = () => {
       });
   }, [id]);
 
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data);
+      });
+  }, [id]);
+
   // return console.log(users.map((user, index) => user));
   return (
     <div>
-      <h1>Article par: </h1>
+      <h1>Article par: {user ? user.name : <p>Chargement...</p>} </h1>
       {users.length > 0 ? (
         <Ul>
           {users.map((user, index) => (
             <Div key={index + 1}>
               {user.id} {user.title}
               <div>{user.body}</div>
-              <Butt> Voir l'article</Butt>
+              <Link to={`/Article/${user.id}`}>
+                <Butt> Voir l'article</Butt>
+              </Link>
             </Div>
           ))}
         </Ul>
